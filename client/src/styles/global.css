@@ -15,6 +15,7 @@
     rgba(126, 64, 246, 1),
     rgba(80, 139, 252, 1)
   );
+  background-repeat: no-repeat;
 }
 
 .mask-custom {

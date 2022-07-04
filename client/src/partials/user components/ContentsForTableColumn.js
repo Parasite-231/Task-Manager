@@ -4,7 +4,7 @@ export default function ContentsForTableColumn({
 }) {
   return (
     <td className={className}>
-      <span>{indexForColumnContent}</span>
+      <span style={{ textAlign: "center" }}>{indexForColumnContent}</span>
     </td>
   );
 }

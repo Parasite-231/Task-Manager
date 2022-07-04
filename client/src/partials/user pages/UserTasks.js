@@ -57,7 +57,7 @@ export default function UserTasks() {
                   <>
                     {listOfTasks.map((records) => {
                       return (
-                        <table className="table text-white mb-0">
+                        <table className="table text-white mb-7">
                           <thead>
                             <tr>
                               <TaskTableHeader tableHeaderText="Assignee" />
