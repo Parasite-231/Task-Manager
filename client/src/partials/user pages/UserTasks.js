@@ -49,26 +49,26 @@ export default function UserTasks() {
               <div className="card-body p-4 text-white">
                 <HeaderImage />
 
-                {loading ? (
-                  <>
-                    <UserTasksLoadingImage />
-                  </>
-                ) : (
-                  <>
-                    {listOfTasks.map((records) => {
-                      return (
-                        <table className="table text-white mb-7">
-                          <thead>
-                            <tr>
-                              <TaskTableHeader tableHeaderText="Assignee" />
-                              <TaskTableHeader tableHeaderText="Assigned To" />
-                              <TaskTableHeader tableHeaderText="Task" />
-                              <TaskTableHeader tableHeaderText="Additional Note" />
-                              <TaskTableHeader tableHeaderText="Remove Task" />
-                              <TaskTableHeader tableHeaderText="Update Task" />
-                            </tr>
-                          </thead>
-                          <tbody>
+                <table className="table text-white mb-7">
+                  <thead>
+                    <tr>
+                      <TaskTableHeader tableHeaderText="Assignee" />
+                      <TaskTableHeader tableHeaderText="Assigned To" />
+                      <TaskTableHeader tableHeaderText="Task" />
+                      <TaskTableHeader tableHeaderText="Additional Note" />
+                      <TaskTableHeader tableHeaderText="Remove Task" />
+                      <TaskTableHeader tableHeaderText="Update Task" />
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {loading ? (
+                      <>
+                        <UserTasksLoadingImage />
+                      </>
+                    ) : (
+                      <>
+                        {listOfTasks.map((records) => {
+                          return (
                             <tr className="fw-normal">
                               <HeaderForTableColumn
                                 indexText={records.assignee}
@@ -89,12 +89,12 @@ export default function UserTasks() {
                               <ButtonForDeleteTask />
                               <ButtonForUpdateTasks />
                             </tr>
-                          </tbody>
-                        </table>
-                      );
-                    })}
-                  </>
-                )}
+                          );
+                        })}
+                      </>
+                    )}
+                  </tbody>
+                </table>
               </div>
             </div>
           </div>
