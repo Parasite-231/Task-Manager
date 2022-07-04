@@ -1,9 +1,6 @@
+import UserTasks from "./partials/user pages/UserTasks";
 function App() {
-  return (
-    <div className="App">
-      <h1>Hello</h1>
-    </div>
-  );
+  return <UserTasks />;
 }
 
 export default App;
