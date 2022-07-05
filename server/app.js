@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const userTasksRouter = require("./router/user router/userTasksRouter");
+const adminTaskManagement = require("./router/admin router/adminTaskManagement");
 const app = express();
 app.use(express.json());
 app.use(cors());
@@ -19,6 +20,7 @@ mongoose
   .catch((err) => console.log(err));
 
 app.use("/user", userTasksRouter);
+app.use("/admin", adminTaskManagement);
 
 app.listen(server_port, () => {
   console.log(`SERVER PORT RUNNING AT ${server_port}`);
