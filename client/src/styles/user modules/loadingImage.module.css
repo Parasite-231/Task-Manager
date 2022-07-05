@@ -1,5 +1,21 @@
 .imagePosition {
   text-align: center;
-  margin-left: 35%;
-  width: 20%;
+  /* margin-left: 35%;
+  width: 20%; */
+
+  /* background-image: url("../../assets/images/img.jpg"); */
+
+  /* Add the blur effect */
+  /* filter: blur(8px);
+  -webkit-filter: blur(8px); */
+
+  /* Full height */
+  height: 100%;
+  width: 30%;
+  margin-left: 40%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
