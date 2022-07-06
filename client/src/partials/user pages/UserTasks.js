@@ -183,6 +183,7 @@ export default function UserTasks() {
                 className="btn btn-primary"
                 style={{ width: "100%" }}
                 onClick={addTask}
+                type="submit"
               >
                 Add
               </button>
