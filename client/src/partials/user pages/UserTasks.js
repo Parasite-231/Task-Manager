@@ -126,41 +126,42 @@ export default function UserTasks() {
               <h5 className="card-title" style={{ textAlign: "center" }}>
                 Manage Task
               </h5>
-              <div className="mb-3">
-                <TextInput
-                  labelText="Assignee"
-                  placeHolder="Assignee"
-                  textType="text"
-                  name="assignee"
-                  onChange={(event) => {
-                    setAssignee(event.target.value);
-                  }}
-                />
-              </div>
-              <div className="mb-3">
-                <TextInput
-                  labelText="Assign To"
-                  placeHolder="Assign To"
-                  textType="text"
-                  name="assign_to"
-                  onChange={(event) => {
-                    setAssignTo(event.target.value);
-                  }}
-                />
-              </div>
-              <div className="mb-3">
-                <TextInput
-                  labelText="Task"
-                  placeHolder="Task"
-                  textType="text"
-                  name="task"
-                  onChange={(event) => {
-                    setTask(event.target.value);
-                  }}
-                />
-              </div>
-              <div className="mb-3">
-                {/* <TextAreaInput
+              <form onSubmit={addTask}>
+                <div className="mb-3">
+                  <TextInput
+                    labelText="Assignee"
+                    placeHolder="Assignee"
+                    textType="text"
+                    name="assignee"
+                    onChange={(event) => {
+                      setAssignee(event.target.value);
+                    }}
+                  />
+                </div>
+                <div className="mb-3">
+                  <TextInput
+                    labelText="Assign To"
+                    placeHolder="Assign To"
+                    textType="text"
+                    name="assign_to"
+                    onChange={(event) => {
+                      setAssignTo(event.target.value);
+                    }}
+                  />
+                </div>
+                <div className="mb-3">
+                  <TextInput
+                    labelText="Task"
+                    placeHolder="Task"
+                    textType="text"
+                    name="task"
+                    onChange={(event) => {
+                      setTask(event.target.value);
+                    }}
+                  />
+                </div>
+                <div className="mb-3">
+                  {/* <TextAreaInput
                   labelText="Additional Description"
                   inputSize="2"
                   placeHolder="Additional Description"
@@ -169,24 +170,25 @@ export default function UserTasks() {
                     setAdditional(event.target.value);
                   }}
                 /> */}
-                <TextInput
-                  labelText="Additional"
-                  placeHolder="Additional"
-                  textType="text"
-                  name="additional"
-                  onChange={(event) => {
-                    setAdditional(event.target.value);
-                  }}
-                />
-              </div>
-              <button
-                className="btn btn-primary"
-                style={{ width: "100%" }}
-                onClick={addTask}
-                type="submit"
-              >
-                Add
-              </button>
+                  <TextInput
+                    labelText="Additional"
+                    placeHolder="Additional"
+                    textType="text"
+                    name="additional"
+                    onChange={(event) => {
+                      setAdditional(event.target.value);
+                    }}
+                  />
+                </div>
+                <button
+                  className="btn btn-primary"
+                  style={{ width: "100%" }}
+                  // onClick={addTask}
+                  type="submit"
+                >
+                  Add
+                </button>
+              </form>
             </div>
           </div>
 
