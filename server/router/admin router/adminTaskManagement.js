@@ -9,7 +9,7 @@ adminTaskManagement.get("/totaltasks", async (req, res) => {
   const totalTasks = await UserTasksModel.count();
   //   console.log(totalTasks);
   res.send({
-    totalTasks: totalTasks,
+    totalTasks,
   });
 });
 adminTaskManagement.get("/totalusers", async (req, res) => {

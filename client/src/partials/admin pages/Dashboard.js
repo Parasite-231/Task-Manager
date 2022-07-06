@@ -1,4 +1,5 @@
 import totalUsers from "../../assets/images/profile.png";
+import totalTasks from "../../assets/images/tasklist.png";
 import "../../styles/admin modules/global.css";
 import AdminDashboardHeader from "../admin components/AdminDashboardHeader";
 import DashboardHeader from "../admin components/DashboardHeader";
@@ -13,6 +14,7 @@ import { useEffect, useState } from "react";
 
 export default function Dashboard() {
   const [listOfUsers, setListOfUsers] = useState("");
+  const [listOfTasks, setListOfTask] = useState("");
   //   const [loading, setLoading] = useState(false);
   //   const [error, setError] = useState(null);
 
@@ -36,6 +38,16 @@ export default function Dashboard() {
       .finally(() => {
         // setLoading(false);
       });
+  }, []);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:2330/admin/totaltasks")
+      .then((response) => {
+        setListOfTask(response.data.totalTasks);
+      })
+      .catch(() => {})
+      .finally(() => {});
   }, []);
 
   return (
@@ -130,8 +142,8 @@ export default function Dashboard() {
 
               <DashboardHighlightedCards
                 cardTitle="Total Tasks "
-                cardIcon={totalUsers}
-                cardData=""
+                cardIcon={totalTasks}
+                cardData={listOfTasks}
               />
             </div>
           </main>
