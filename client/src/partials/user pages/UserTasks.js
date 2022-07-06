@@ -10,7 +10,6 @@ import ContentsForTableColumn from "../user components/ContentsForTableColumn";
 import HeaderForTableColumn from "../user components/HeaderForTableColumn";
 import HeaderImage from "../user components/HeaderImage";
 import TaskTableHeader from "../user components/TaskTableHeader";
-import TextAreaInput from "../user components/TextAreaInput";
 import TextInput from "../user components/TextInput";
 
 // for fetching
@@ -18,9 +17,37 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 export default function UserTasks() {
   const [loading, setLoading] = useState(false);
+  const [assignee, setAssignee] = useState("");
+  const [assign_to, setAssignTo] = useState("");
+  const [task, setTask] = useState("");
+  const [additional, setAdditional] = useState("");
   const [listOfTasks, setListOfTasks] = useState([]);
   const [error, setError] = useState(null);
 
+  const addTask = () => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 3000);
+    axios
+      .post("http://localhost:2330/user/addtask", {
+        assignee: assignee,
+        assign_to: assign_to,
+        task: task,
+        additional: additional,
+      })
+      .then((response) => {
+        setListOfTasks([
+          ...listOfTasks,
+          {
+            assignee: assignee,
+            assign_to: assign_to,
+            task: task,
+            additional: additional,
+          },
+        ]);
+      });
+  };
   useEffect(() => {
     setLoading(true);
     setTimeout(() => {
@@ -104,6 +131,10 @@ export default function UserTasks() {
                   labelText="Assignee"
                   placeHolder="Assignee"
                   textType="text"
+                  name="assignee"
+                  onChange={(event) => {
+                    setAssignee(event.target.value);
+                  }}
                 />
               </div>
               <div className="mb-3">
@@ -111,6 +142,10 @@ export default function UserTasks() {
                   labelText="Assign To"
                   placeHolder="Assign To"
                   textType="text"
+                  name="assign_to"
+                  onChange={(event) => {
+                    setAssignTo(event.target.value);
+                  }}
                 />
               </div>
               <div className="mb-3">
@@ -118,15 +153,39 @@ export default function UserTasks() {
                   labelText="Task"
                   placeHolder="Task"
                   textType="text"
+                  name="task"
+                  onChange={(event) => {
+                    setTask(event.target.value);
+                  }}
                 />
               </div>
               <div className="mb-3">
-                <TextAreaInput
+                {/* <TextAreaInput
                   labelText="Additional Description"
                   inputSize="2"
                   placeHolder="Additional Description"
+                  name="additional"
+                  onChange={(event) => {
+                    setAdditional(event.target.value);
+                  }}
+                /> */}
+                <TextInput
+                  labelText="Additional"
+                  placeHolder="Additional"
+                  textType="text"
+                  name="additional"
+                  onChange={(event) => {
+                    setAdditional(event.target.value);
+                  }}
                 />
               </div>
+              <button
+                className="btn btn-primary"
+                style={{ width: "100%" }}
+                onClick={addTask}
+              >
+                Add
+              </button>
             </div>
           </div>
 
