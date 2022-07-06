@@ -1,5 +1,4 @@
 import totalUsers from "../../assets/images/profile.png";
-import totalTaskIcon from "../../assets/images/tasklist.png";
 import "../../styles/admin modules/global.css";
 import AdminDashboardHeader from "../admin components/AdminDashboardHeader";
 import DashboardHeader from "../admin components/DashboardHeader";
@@ -7,7 +6,38 @@ import DashboardHighlightedCards from "../admin components/DashboardHighlightedC
 import DashboardSideBarAdminProfile from "../admin components/DashboardSideBarAdminProfile";
 import DashboardSideBarAdminProfileOptions from "../admin components/DashboardSideBarAdminProfileOptions";
 import DashboardSideNavBarList from "../admin components/DashboardSideNavBarList";
+
+//imports for fetching
+import axios from "axios";
+import { useEffect, useState } from "react";
+
 export default function Dashboard() {
+  const [listOfUsers, setListOfUsers] = useState("");
+  //   const [loading, setLoading] = useState(false);
+  //   const [error, setError] = useState(null);
+
+  useEffect(() => {
+    // setLoading(true);
+    // setTimeout(() => {
+    //   setLoading(false);
+    // }, 5000);
+    axios
+      .get("http://localhost:2330/admin/totalusers")
+      .then((response) => {
+        // setListOfTask(response.data);
+        // eslint-disable-next-line no-const-assign, react-hooks/exhaustive-deps
+        // numberOfUsers = response.data;
+        // eslint-disable-next-line react-hooks/exhaustive-deps, no-const-assign
+        // listOfUsers = response.data;
+        setListOfUsers(response.data.totalUsers);
+        console.log(response.data.totalUsers);
+      })
+      .catch((err) => {})
+      .finally(() => {
+        // setLoading(false);
+      });
+  }, []);
+
   return (
     <div>
       <DashboardHeader />
@@ -94,9 +124,10 @@ export default function Dashboard() {
             <div className="row row-cols-1 row-cols-md-4 g-4">
               <DashboardHighlightedCards
                 cardTitle="Total Users "
-                cardIcon={totalTaskIcon}
-                cardData=""
+                cardIcon={totalUsers}
+                cardData={listOfUsers}
               />
+
               <DashboardHighlightedCards
                 cardTitle="Total Tasks "
                 cardIcon={totalUsers}

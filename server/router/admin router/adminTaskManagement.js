@@ -16,7 +16,7 @@ adminTaskManagement.get("/totalusers", async (req, res) => {
   const totalUsers = await UserTasksModel.count();
   //   console.log(totalTasks);
   res.send({
-    totalUsers: totalUsers,
+    totalUsers,
   });
 });
 adminTaskManagement.get("/nameoftheusers", async (req, res) => {
