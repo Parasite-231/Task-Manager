@@ -1,11 +1,11 @@
+import { NavLink } from "react-router-dom";
 import DeleteButtonImage from "../../assets/images/delete.png";
 import UpdateButtonImage from "../../assets/images/editTask.png";
 import "../../styles/global.css";
 import classes from "../../styles/user modules/button.module.css";
-import {
-  default as UserErrorDataImage,
-  default as UserTasksLoadingImage,
-} from "../fetch data/user data/UserTasksLoadingImage";
+
+// import Loading from 'react-fullscreen-loading';
+import UserTasksLoadingImage from "../fetch data/user data/UserTasksLoadingImage";
 import ContentsForTableColumn from "../user components/ContentsForTableColumn";
 import HeaderForTableColumn from "../user components/HeaderForTableColumn";
 import HeaderImage from "../user components/HeaderImage";
@@ -24,11 +24,12 @@ export default function UserTasks() {
   const [listOfTasks, setListOfTasks] = useState([]);
   const [error, setError] = useState(null);
 
-  const addTask = () => {
+  const addTask = (event) => {
+    event.preventDefault();
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
-    }, 3000);
+    }, 5000);
     axios
       .post("http://localhost:2330/user/addtask", {
         assignee: assignee,
@@ -52,7 +53,7 @@ export default function UserTasks() {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
-    }, 3000);
+    }, 5000);
 
     axios
       .get("http://localhost:2330/user/tasks")
@@ -111,9 +112,7 @@ export default function UserTasks() {
   // };
 
   if (error) {
-    <>
-      <UserErrorDataImage />
-    </>;
+    <>{/* <UserErrorDataImage /> */}</>;
   }
 
   return (
@@ -265,6 +264,7 @@ export default function UserTasks() {
                     )}
                   </tbody>
                 </table>
+                <NavLink to="/Dashboard">Dashboard</NavLink>
               </div>
             </div>
           </div>
